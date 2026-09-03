@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergym - Login</title>
+
+    <link rel="stylesheet" href="login.css">
+
+    <!-- Ícones -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+   
+
+    <main class="page">
+
+        <!-- Fundo decorativo -->
+        <div class="background">
+
+            <div class="heartbeat">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="leaf leaf-1">✦</div>
+            <div class="leaf leaf-2">✦</div>
+
+        </div>
+
+        <!-- Card principal -->
+        <section class="login-card">
+
+            <!-- Lado esquerdo -->
+            <div class="visual-side">
+
+                <div class="runner runner-top">
+                    <i class="fa-solid fa-person-running"></i>
+                </div>
+
+                <div class="runner runner-bottom">
+                    <i class="fa-solid fa-person-running"></i>
+                </div>
+
+                <div class="city"></div>
+
+                <div class="side-content">
+
+                    <div class="lightning">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <h2>
+                        ENERGIA QUE<br>
+                        TE MOVE.
+                    </h2>
+
+                    <h3>
+                        RESULTADOS QUE<br>
+                        TE TRANSFORMAM.
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <!-- Lado direito -->
+            <div class="form-side">
+
+                <div class="dots"></div>
+
+                <!-- Logo -->
+                <div class="logo">
+                        <span>
+                    <div class="logo-symbol">
+                        <img src="n.logo-removebg-preview.png" width="350px "  height=3px alt="Logo da empresa"
+                        </span>
+                    </div>
+
+                    <div class="logo-name">
+                       
+                    </div>
+
+                </div>
+
+                <div class="slogan">
+                    <p>
+                        <strong>Sua energia.</strong>
+                        Seu movimento.
+                    </p>
+
+                    <p>
+                        Seu melhor <strong>resultado.</strong>
+                    </p>
+                </div>
+
+                <div class="welcome">
+                    <h1>BEM-VINDO(A)!</h1>
+                    <p>Faça login para continuar sua jornada.</p>
+                </div>
+
+                <!-- Login -->
+                <form class="login-form">
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <label for="username" class="sr-only">
+                            E-mail ou usuário
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="E-mail ou usuário"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <label for="password" class="sr-only">
+                            Senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Senha"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            aria-label="Mostrar senha"
+                        >
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="form-options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                name="remember"
+                            >
+
+                            <span>Lembrar-me</span>
+
+                        </label>
+
+                        <a href="#">
+                            Esqueceu sua senha?
+                        </a>
+
+                    </div>
+                
+                    <button type="submit" class="login-button">
+                      <span>Entrar</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </form>
+
+                <!-- Separador -->
+                <div class="separator">
+                    <span></span>
+                    <p>OU</p>
+                    <span></span>
+                </div>
+
+                <!-- Login social -->
+                <div class="social-login">
+
+                    <button type="button" class="social-button">
+                        <i class="fa-brands fa-google"></i>
+                        <span>Entrar com Google</span>
+                    </button>
+
+                    <button type="button" class="social-button apple">
+                        <i class="fa-brands fa-apple"></i>
+                        <span>Entrar com Apple</span>
+                    </button>
+
+                </div>
+
+                <!-- Cadastro -->
+                <div class="register">
+                    <span>Ainda não tem uma conta?</span>
+                    <a href="#">Crie agora!</a>
+                </div>
+
+                <!-- Recursos -->
+                <div class="features">
+
+                    
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const password = document.querySelector("#password");
+        const showPassword = document.querySelector(".show-password");
+
+        showPassword.addEventListener("click", () => {
+
+            const isPassword =
+                password.getAttribute("type") === "password";
+
+            password.setAttribute(
+                "type",
+                isPassword ? "text" : "password"
+            );
+
+            showPassword.innerHTML = isPassword
+                ? '<i class="fa-regular fa-eye-slash"></i>'
+                : '<i class="fa-regular fa-eye"></i>';
+
+        });
+
+    </script>
+
+</body>
+</html>

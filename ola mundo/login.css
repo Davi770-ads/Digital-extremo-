@@ -1,0 +1,1303 @@
+
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+
+    background: #08753f;
+}
+
+
+/* =====================================================
+   PÁGINA — OCUPA TODA A TELA
+===================================================== */
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+
+    padding: 0;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(70, 170, 75, .35),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(0, 100, 60, .4),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #08763f 0%,
+            #00854a 50%,
+            #006b3d 100%
+        );
+}
+
+
+/* =====================================================
+   CARD PRINCIPAL
+   AGORA OCUPA A TELA INTEIRA
+===================================================== */
+
+.login-card {
+    width: 100%;
+    height: 100%;
+
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns: 45% 55%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 0;
+
+    background: #ffffff;
+
+    box-shadow: none;
+
+    z-index: 2;
+}
+
+
+/* =====================================================
+   LADO ESQUERDO
+===================================================== */
+
+.visual-side {
+    position: relative;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 105, 65, .94),
+            rgba(0, 80, 52, .94)
+        ),
+        linear-gradient(
+            135deg,
+            #3b9c48,
+            #006b45
+        );
+
+    border-right: none;
+}
+
+
+/* =====================================================
+   DECORAÇÃO DO LADO ESQUERDO
+===================================================== */
+
+.visual-side::before {
+    content: "";
+
+    position: absolute;
+
+    width: 900px;
+    height: 1100px;
+
+    right: -690px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    border-left:
+        12px solid #ff5a00;
+
+    transform: rotate(-5deg);
+
+    z-index: 2;
+}
+
+
+.visual-side::after {
+    content: "";
+
+    position: absolute;
+
+    width: 800px;
+    height: 800px;
+
+    left: -400px;
+    bottom: -450px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 0 0 80px rgba(255,255,255,.025),
+        0 0 0 160px rgba(255,255,255,.02);
+}
+
+
+/* =====================================================
+   CORREDORES
+===================================================== */
+
+.runner {
+    position: absolute;
+
+    color: rgba(0, 40, 35, .45);
+
+    z-index: 1;
+
+    filter: drop-shadow(
+        0 10px 20px rgba(0,0,0,.08)
+    );
+}
+
+.runner-top {
+    top: 16%;
+    left: 25%;
+
+    font-size: clamp(130px, 14vw, 230px);
+}
+
+.runner-bottom {
+    bottom: 17%;
+    left: -2%;
+
+    font-size: clamp(120px, 13vw, 210px);
+}
+
+
+/* =====================================================
+   CIDADE
+===================================================== */
+
+.city {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 20%;
+
+    height: 130px;
+
+    opacity: .6;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 45, 35, .65),
+            transparent
+        );
+
+    clip-path: polygon(
+        0 100%,
+        0 70%,
+        6% 70%,
+        6% 40%,
+        11% 40%,
+        11% 65%,
+        17% 65%,
+        17% 25%,
+        22% 25%,
+        22% 60%,
+        27% 60%,
+        27% 35%,
+        33% 35%,
+        33% 55%,
+        39% 55%,
+        39% 15%,
+        45% 15%,
+        45% 55%,
+        52% 55%,
+        52% 30%,
+        59% 30%,
+        59% 65%,
+        68% 65%,
+        68% 45%,
+        76% 45%,
+        76% 70%,
+        100% 70%,
+        100% 100%
+    );
+}
+
+
+/* =====================================================
+   TEXTO DO LADO ESQUERDO
+===================================================== */
+
+.side-content {
+    position: absolute;
+
+    left: 10%;
+    bottom: 10%;
+
+    width: 80%;
+
+    z-index: 5;
+
+    text-align: left;
+}
+
+.lightning {
+    color: #ff5a00;
+
+    font-size: 42px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(
+            0 5px 10px rgba(255,90,0,.25)
+        );
+}
+
+.side-content h2,
+.side-content h3 {
+    font-size: clamp(20px, 1.6vw, 30px);
+
+    line-height: 1.35;
+
+    font-weight: 800;
+
+    letter-spacing: -.5px;
+}
+
+.side-content h2 {
+    color: #ffffff;
+}
+
+.side-content h3 {
+    color: #ff5a00;
+
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+   LADO DO FORMULÁRIO
+===================================================== */
+
+.form-side {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        40px
+        clamp(45px, 8vw, 120px);
+
+    background: #ffffff;
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   CONTAINER VISUAL DO FORMULÁRIO
+   LIMITA A LARGURA PARA NÃO FICAR ESPALHADO
+===================================================== */
+
+.form-side > * {
+    width: 100%;
+
+    max-width: 480px;
+}
+
+
+/* Elementos que não precisam ocupar largura */
+
+.logo,
+.slogan,
+.welcome {
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   PONTOS DECORATIVOS
+===================================================== */
+
+.dots {
+    position: absolute;
+
+    top: 45px;
+    right: 55px;
+
+    width: 60px;
+    height: 35px;
+
+    background-image:
+        radial-gradient(
+            #00835b 1.5px,
+            transparent 1.5px
+        );
+
+    background-size: 13px 13px;
+
+    opacity: .75;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    text-align: center;
+}
+
+.logo-symbol {
+image-rendering: auto;
+image-orientation: flip;
+
+
+}
+
+.logo-symbol span {
+    color: #ff5a00;
+
+    font-size: 43px;
+}
+
+.logo-name {
+    margin-top: 2px;
+
+    color: #006b45;
+
+    font-size: clamp(27px, 2.2vw, 38px);
+
+    font-weight: 800;
+
+    font-style: italic;
+
+    letter-spacing: -2px;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+.logo-name span {
+    color: #006b45;
+}
+
+.logo-name strong {
+    color: #ff5a00;
+}
+
+
+/* =====================================================
+   SLOGAN
+===================================================== */
+
+.slogan {
+    margin-top: 12px;
+
+    color: #555b58;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+.slogan p {
+    text-align: center;
+}
+
+.slogan strong {
+    color: #006b45;
+}
+
+
+/* =====================================================
+   BEM-VINDO
+===================================================== */
+
+.welcome {
+    margin-top: 30px;
+
+    text-align: center;
+}
+
+.welcome h1 {
+    color: #006b45;
+
+    font-size: 22px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    text-align: center;
+}
+
+.welcome p {
+    margin-top: 7px;
+
+    color: #707773;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   FORMULÁRIO
+===================================================== */
+
+.login-form {
+    width: 100%;
+
+    margin-top: 25px;
+
+    text-align: left;
+}
+
+
+/* =====================================================
+   CAMPOS
+===================================================== */
+
+.input-group {
+    width: 100%;
+
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    border:
+        1px solid #cbd5cf;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    overflow: hidden;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .2s ease;
+}
+
+.input-group:hover {
+    border-color: #9cafaa;
+}
+
+.input-group:focus-within {
+    border-color: #00835b;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(0,131,91,.08);
+}
+
+.input-group > i {
+    width: 52px;
+
+    flex-shrink: 0;
+
+    color: #00835b;
+
+    text-align: center;
+
+    font-size: 17px;
+}
+
+.input-group input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #303633;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 13px;
+}
+
+.input-group input::placeholder {
+    color: #a1aaa5;
+}
+
+
+/* =====================================================
+   BOTÃO OLHO
+===================================================== */
+
+.show-password {
+    width: 50px;
+    height: 100%;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #7b8580;
+
+    cursor: pointer;
+
+    transition: color .2s ease;
+}
+
+.show-password:hover {
+    color: #00835b;
+}
+
+
+/* =====================================================
+   OPÇÕES
+===================================================== */
+
+.form-options {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin: 12px 0 18px;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   LEMBRAR
+===================================================== */
+
+.remember {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #4b5563;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    white-space: nowrap;
+}
+
+.remember input {
+    appearance: none;
+
+    width: 17px;
+    height: 17px;
+
+    flex-shrink: 0;
+
+    margin: 0;
+
+    border:
+        1.5px solid #b8c4bd;
+
+    border-radius: 4px;
+
+    background: #ffffff;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition: all .2s ease;
+}
+
+.remember input:hover {
+    border-color: #00835b;
+}
+
+.remember input:checked {
+    border-color: #00835b;
+
+    background: #00835b;
+}
+
+.remember input:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -53%);
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   ESQUECI SENHA
+===================================================== */
+
+.form-options a {
+    color: #f15a24;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition: color .2s ease;
+}
+
+.form-options a:hover {
+    color: #00835b;
+}
+
+
+/* =====================================================
+   BOTÃO ENTRAR
+===================================================== */
+
+.login-button {
+    width: 100%;
+
+    height: 54px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5b00,
+            #ff7418
+        );
+
+    box-shadow:
+        0 8px 20px
+        rgba(255,91,0,.22);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.login-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.22),
+            transparent
+        );
+
+    transition:
+        left .5s ease;
+}
+
+.login-button:hover::before {
+    left: 100%;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(255,91,0,.3);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.login-button i {
+    font-size: 16px;
+
+    transition:
+        transform .2s ease;
+}
+
+.login-button:hover i {
+    transform: translateX(5px);
+}
+
+
+/* =====================================================
+   SEPARADOR
+===================================================== */
+
+.separator {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 22px 0 17px;
+}
+
+.separator span {
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #dfe5e1
+        );
+}
+
+.separator span:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            #dfe5e1,
+            transparent
+        );
+}
+
+.separator p {
+    margin: 0;
+
+    color: #9aa39e;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: .7px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   GOOGLE / APPLE
+===================================================== */
+
+.social-login {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+}
+
+.social-button {
+    width: 100%;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    border:
+        1px solid #dce3df;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #454b48;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 2px 6px
+        rgba(0,0,0,.03);
+
+    transition:
+        all .2s ease;
+}
+
+.social-button:hover {
+    border-color: #b7c7bd;
+
+    background: #f9fbfa;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 16px
+        rgba(0,0,0,.07);
+}
+
+.social-button:active {
+    transform: translateY(0);
+}
+
+.social-button:first-child i {
+    color: #4285f4;
+
+    font-size: 18px;
+}
+
+.social-button.apple i {
+    color: #111111;
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   CRIAR CONTA
+===================================================== */
+
+.register {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 17px;
+
+    color: #737b76;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    text-align: center;
+}
+
+.register a {
+    color: #00835b;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    position: relative;
+}
+
+.register a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -3px;
+
+    width: 0;
+    height: 1px;
+
+    background: #00835b;
+
+    transition:
+        width .2s ease;
+}
+
+.register a:hover::after {
+    width: 100%;
+}
+
+
+/* =====================================================
+   CARDS INFERIORES
+===================================================== */
+
+.features {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-top: 24px;
+}
+
+.feature {
+    min-height: 68px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 8px 4px;
+
+    border:
+        1px solid #e9efeb;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f9fbfa
+        );
+
+    color: #39735e;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-3px);
+
+    border-color: #c9ddd3;
+
+    box-shadow:
+        0 8px 18px
+        rgba(0,91,55,.08);
+}
+
+.feature i {
+    font-size: 21px;
+
+    transition:
+        transform .2s ease;
+}
+
+.feature:hover i {
+    transform: scale(1.1);
+}
+
+
+/* Cores dos ícones */
+
+.feature:nth-child(1) i {
+    color: #ff5b00;
+}
+
+.feature:nth-child(2) i {
+    color: #00835b;
+}
+
+.feature:nth-child(3) i {
+    color: #ff6a00;
+}
+
+.feature:nth-child(4) i {
+    color: #00835b;
+}
+
+
+/* =====================================================
+   RESPONSIVO — TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .login-card {
+        grid-template-columns: 40% 60%;
+    }
+
+    .form-side {
+        padding:
+            30px 45px;
+    }
+
+    .side-content {
+        left: 8%;
+        width: 75%;
+    }
+
+    .side-content h2,
+    .side-content h3 {
+        font-size: 19px;
+    }
+
+    .logo-symbol {
+        width: 75px;
+        height: 80px;
+
+        font-size: 72px;
+    }
+
+    .logo-name {
+        font-size: 27px;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVO — CELULAR
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .login-card {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+    }
+
+    .visual-side {
+        display: none;
+    }
+
+    .form-side {
+        width: 100%;
+        height: 100%;
+
+        padding:
+            30px 25px;
+    }
+
+    .form-side > * {
+        max-width: 450px;
+    }
+
+    .dots {
+        top: 25px;
+        right: 25px;
+    }
+
+    .logo-symbol {
+        width: 75px;
+        height: 80px;
+
+        font-size: 70px;
+    }
+
+    .logo-name {
+        font-size: 27px;
+    }
+
+    .welcome {
+        margin-top: 25px;
+    }
+
+    .welcome h1 {
+        font-size: 20px;
+    }
+
+    .login-form {
+        margin-top: 22px;
+    }
+
+    .social-login {
+        grid-template-columns:
+            1fr 1fr;
+    }
+}
+
+
+/* =====================================================
+   CELULAR PEQUENO
+===================================================== */
+
+@media (max-width: 450px) {
+
+    .form-side {
+        padding:
+            25px 20px;
+    }
+
+    .logo-symbol {
+        width: 65px;
+        height: 70px;
+
+        font-size: 62px;
+    }
+
+    .logo-name {
+        font-size: 24px;
+    }
+
+    .slogan {
+        font-size: 10px;
+    }
+
+    .welcome h1 {
+        font-size: 18px;
+    }
+
+    .welcome p {
+        font-size: 10px;
+    }
+
+    .input-group {
+        height: 50px;
+    }
+
+    .login-button {
+        height: 50px;
+    }
+
+    .social-login {
+        grid-template-columns: 1fr;
+    }
+
+    .features {
+        gap: 6px;
+    }
+
+    .feature {
+        min-height: 58px;
+
+        font-size: 8px;
+    }
+
+    .feature i {
+        font-size: 18px;
+    }
+}
+
