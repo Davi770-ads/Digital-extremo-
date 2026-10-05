@@ -49,6 +49,7 @@
       top: 0;
       bottom: 0;
       z-index: 20;
+      cursor: pointer;
     }
 
     div.logo {
@@ -57,7 +58,20 @@
       align-items:center;
       height: 50px;
       margin-bottom: 30px;
+    }
+      .menu-item a {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.menu-item a:hover {
+   color: #035a3a;
+}
 map-responsive{
+
+
 
     overflow:hidden;
 
@@ -67,7 +81,6 @@ map-responsive{
 
     height:0;
 
-}
 
 .map-responsive iframe{
 
@@ -83,7 +96,7 @@ map-responsive{
 
 }
       
-    }
+}
 
     .menu {
       display: flex;
@@ -213,9 +226,7 @@ map-responsive{
       margin: auto;
     }
 
-    /* =========================
-       HERO
-    ========================= */
+   
 
     .hero {
       display: grid;
@@ -278,7 +289,7 @@ map-responsive{
           background 0.2s ease;
   }
   
-  /* Botão verde */
+
   .btn-explorar {
       background: #176b4d;
       color: white;
@@ -288,12 +299,12 @@ map-responsive{
   
  
   
-  /* Quando passa o mouse */
+ 
   .btn:hover {
       transform: translateY(-5px);
   }
   
-  /* Quando clica */
+
   .btn:active {
       transform: translateY(3px);
       box-shadow: 0 3px 0 #0d4d36;
@@ -425,7 +436,6 @@ map-responsive{
     a {
       color: white; 
       text-decoration: none; 
-      t;
     }
     
       

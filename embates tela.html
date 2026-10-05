@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,185 +8,238 @@
 
     <title>ENERGYM - Embates</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="embates.css">
-    <link rel="stylesheet" href="s">
 </head>
 
 <body>
 
-<header>
+    <header>
 
-    <div class="logo">
-    
-        <img src="logo0.1-removebg-preview.png" width="250px" height="'150px" alt="">
-    </div>
-
-    <nav>
-        <a href="#">INICIO</a>
-        <a href="#">PERFIL</a>
-        <a href="#">RANKING</a>
-        <a href="#">COMUNIDADE</a>
-    </nav>
-
-</header>
-
-
-<main>
-
-    <section class="topo">
-
-        <div>
-            <span class="tag">🏆 EMBATES,ORGANIZE PARTIDAS E DIVIRTA-SE!</span>
-
-            <h1>
-                Encontre ou crie um
-                <span>embate</span>
-            </h1>
-
-            <p>
-                Encontre pessoas para praticar esportes
-                perto de você.
-            </p>
+        <div class="logo">
+            <img 
+                src="logo0.1-removebg-preview.png"
+                width="300"
+                height="85"
+                alt="Logo ENERGYM">
         </div>
 
-    </section>
+        <nav>
+            <a href="file:///C:/Users/Ricardo%20Nascimento/Downloads/ola%20mundo%202.0/teste.html">Início</a>
+            <a href="file:///C:/Users/Ricardo%20Nascimento/Downloads/ola%20mundo%202.0/Basquete.html">Perfil</a>
+            <a href="#">Ranking</a>
+            <a href="#">Comunidade</a>
+            <a href="#">Atividade</a>
+        </nav>
+
+    </header>
 
 
-    <section class="conteudo">
+    <main>
 
-        <div class="mapa-area">
+        <!-- TOPO -->
+        <section class="topo">
 
-            <div id="map"></div>
+            <div>
 
-            <button
-                class="localizacao"
-                onclick="usarMinhaLocalizacao()">
+                <span class="tag">
+                     EMBATES, ORGANIZE PARTIDAS E DIVIRTA-SE!
+                </span>
 
-                📍 Usar minha localização
+                <h1>
+                    Crie um
+                    <span>embate</span>
+                </h1>
 
-            </button>
-
-        </div>
-
-
-        <div class="painel">
-
-            <h2>🔥 Criar embate</h2>
-
-            <p class="descricao">
-                Clique no mapa para escolher o local.
-            </p>
-
-
-            <label>Nome do embate</label>
-
-            <input
-                type="text"
-                id="nome"
-                placeholder="Ex: Futebol sábado">
-
-
-            <label>Esporte</label>
-
-            <select id="esporte">
-
-                <option value="Futebol">
-                    ⚽ Futebol
-                </option>
-
-                <option value="Basquete">
-                    🏀 Basquete
-                </option>
-
-                <option value="Vôlei">
-                    🏐 Vôlei
-                </option>
-
-                <option value="Corrida">
-                    🏃 Corrida
-                </option>
-
-            </select>
-
-
-            <div class="linha">
-
-                <div>
-
-                    <label>Data</label>
-
-                    <input
-                        type="date"
-                        id="data">
-
-                </div>
-
-
-                <div>
-
-                    <label>Horário</label>
-
-                    <input
-                        type="time"
-                        id="horario">
-
-                </div>
-
-            </div>
-
-
-            <label>Número de vagas</label>
-
-            <input
-                type="number"
-                id="vagas"
-                min="2"
-                value="10">
-
-
-            <div class="local-selecionado">
-
-                <strong>📍 Local selecionado</strong>
-
-                <p id="localTexto">
-                    Nenhum local selecionado
+                <p>
+                    Encontre pessoas para praticar esportes
+                    perto de você.
                 </p>
 
             </div>
 
-
-            <button
-                class="criar"
-                onclick="criarEmbate()">
-
-                🚀 Criar embate
-
-            </button>
-
-        </div>
-
-    </section>
+        </section>
 
 
-    <section class="embates">
+        <!-- CONTEÚDO -->
+        <section class="conteudo">
 
-        <h2>📍 Embates próximos</h2>
+            <!-- MAPA -->
+            <div class="mapa-area">
 
-        <div id="listaEmbates"></div>
+                <div id="map">
 
-    </section>
+                    <!-- Mapa temporário -->
+                    <iframe
+                        src="https://maps.google.com/maps?q=Extremoz%20RN%20CEEP&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        loading="lazy"
+                        title="Mapa">
+                    </iframe>
 
-</main>
+                </div>
 
 
-<script src="script.js"></script>
+                <button
+                    type="button"
+                    class="localizacao"
+                    onclick="usarMinhaLocalizacao()">
+
+                     Usar minha localização
+
+                </button>
+
+            </div>
 
 
-<script
-src="<div class="mapouter"><div class="gmap_canvas"><iframe width="1200" height="1200" id="gmap_canvas" src="https://maps.google.com/maps?q=extremoz+rn+ceep&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://textcaseconvert.com/"></a><br><a href="https://online.stopwatch-timer.net">classroom stopwatch</a><br><style>.mapouter{position: relative;text-align: right;height: 1200px;width: 1200px;}</style><a href="https://www.embedmaps.co">location map</a><style>.gmap_canvas{overflow: hidden;background: none !important;height: 1200px;width: 1200px;}</style></div></div>"
-async
-defer>
-</script>
+            <!-- PAINEL -->
+            <div class="painel">
+
+                <h2>Criar embate</h2>
+
+                <p class="descricao">
+                    Clique no mapa para escolher o local.
+                </p>
+
+
+                <label for="nome">
+                    Nome do embate
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Ex: Futebol sábado">
+
+
+                <label for="esporte">
+                    Esporte
+                </label>
+
+                <select id="esporte">
+
+                    <option value="Futebol">
+                        ⚽ Futebol
+                    </option>
+
+                    <option value="Basquete">
+                        🏀 Basquete
+                    </option>
+
+                    <option value="Vôlei">
+                        🏐 Vôlei
+                    </option>
+
+                    <option value="Corrida">
+                        🏃 Corrida
+                    </option>
+
+                </select>
+
+
+                <div class="linha">
+
+                    <div>
+
+                        <label for="data">
+                            Data
+                        </label>
+
+                        <input
+                            type="date"
+                            id="data">
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="horario">
+                            Horário
+                        </label>
+
+                        <input
+                            type="time"
+                            id="horario">
+
+                    </div>
+
+                </div>
+
+
+                <label for="vagas">
+                    Número de vagas
+                </label>
+
+                <input
+                    type="number"
+                    id="vagas"
+                    min="2"
+                    value="10">
+
+
+                <!-- LOCAL SELECIONADO -->
+                <div class="local-selecionado">
+
+                    <strong>
+                        📍 Local selecionado
+                    </strong>
+
+                    <p id="localTexto">
+                        Nenhum local selecionado
+                    </p>
+
+                </div>
+
+
+                <!-- BOTÃO -->
+                <button
+                    type="button"
+                    class="criar"
+                    onclick="criarEmbate()">
+
+                    🚀 Criar embate
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- EMBATES -->
+        <section class="embates">
+
+          
+
+            <div id="listaEmbates"></div>
+
+        </section>
+
+    </main>
+            </section>
+
+    </main>
+
+
+   
+   
+
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=SUA_API_KEY&callback=initMap&libraries=marker"
+        async
+        defer>
+    </script>
 
 </body>
+
 </html>
+
+
+</body>
+
+</html>
+

@@ -1,123 +1,117 @@
-let mapa;
+let map;
+let marcadorSelecionado = null;
+let marcadorUsuario = null;
 
-let marcador;
-
-let localSelecionado = null;
-
-
-// Embates de exemplo
-let embates = [
-
-    {
-        nome: "Futebol sábado",
-        esporte: "Futebol",
-        data: "30/08/2026",
-        horario: "16:00",
-        vagas: 10,
-
-        lat: -5.7945,
-        lng: -35.2110
-    },
-
-    {
-        nome: "Basquete ENERGYM",
-        esporte: "Basquete",
-        data: "31/08/2026",
-        horario: "18:30",
-        vagas: 8,
-
-        lat: -5.8000,
-        lng: -35.2050
-    }
-
-];
+let localSelecionado = {
+    latitude: null,
+    longitude: null
+};
 
 
-// Inicializar mapa
-function iniciarMapa() {
+// ==============================
+// INICIAR MAPA
+// ==============================
 
+async function initMap() {
+
+    const { AdvancedMarkerElement } =
+        await google.maps.importLibrary("marker");
+
+    // Centro inicial do mapa
     const centro = {
-        lat: -5.7945,
-        lng: -35.2110
+        lat: -3.71722,
+        lng: -38.5434
     };
 
-
-    mapa = new google.maps.Map(
+    map = new google.maps.Map(
         document.getElementById("map"),
         {
             center: centro,
-            zoom: 13
+            zoom: 13,
+            mapId: "DEMO_MAP_ID"
         }
     );
 
 
-    // Clicar no mapa
-    mapa.addListener("click", function(event) {
+    // ==============================
+    // CLIQUE NO MAPA
+    // ==============================
+
+    map.addListener("click", function(event) {
+
+        const latitude = event.latLng.lat();
+        const longitude = event.latLng.lng();
 
         selecionarLocal(
-            event.latLng.lat(),
-            event.latLng.lng()
+            latitude,
+            longitude,
+            AdvancedMarkerElement
         );
 
     });
 
-
-    // Mostrar embates
-    mostrarEmbatesNoMapa();
-
-    mostrarListaEmbates();
 }
 
 
-// Selecionar local
-function selecionarLocal(lat, lng) {
+// ==============================
+// SELECIONAR LOCAL
+// ==============================
 
-    localSelecionado = {
-        lat: lat,
-        lng: lng
-    };
+function selecionarLocal(
+    latitude,
+    longitude,
+    AdvancedMarkerElement
+) {
+
+    // Salvar localização
+    localSelecionado.latitude = latitude;
+    localSelecionado.longitude = longitude;
 
 
-    // Remover marcador antigo
-    if (marcador) {
+    // Remover marcador anterior
+    if (marcadorSelecionado) {
 
-        marcador.setMap(null);
+        marcadorSelecionado.map = null;
 
     }
 
 
-    // Criar marcador
-    marcador = new google.maps.Marker({
+    // Criar novo marcador
+    marcadorSelecionado =
+        new AdvancedMarkerElement({
 
-        position: {
-            lat: lat,
-            lng: lng
-        },
+            map: map,
 
-        map: mapa,
+            position: {
+                lat: latitude,
+                lng: longitude
+            },
 
-        animation:
-            google.maps.Animation.DROP
+            title: "Local selecionado"
+
+        });
+
+
+    // Mostrar no painel
+    document.getElementById("localTexto").innerText =
+        `Latitude: ${latitude.toFixed(6)}
+Longitude: ${longitude.toFixed(6)}`;
+
+
+    // Centralizar mapa
+    map.panTo({
+        lat: latitude,
+        lng: longitude
     });
 
-
-    mapa.setCenter({
-        lat: lat,
-        lng: lng
-    });
-
-
-    document.getElementById(
-        "localTexto"
-    ).innerText =
-
-        `Latitude: ${lat.toFixed(5)}
-        | Longitude: ${lng.toFixed(5)}`;
 }
 
 
-// Usar localização do usuário
-function usarMinhaLocalizacao() {
+// ==============================
+// USAR MINHA LOCALIZAÇÃO
+// ==============================
+
+async function usarMinhaLocalizacao() {
 
     if (!navigator.geolocation) {
 
@@ -126,52 +120,120 @@ function usarMinhaLocalizacao() {
         );
 
         return;
+
     }
 
 
     navigator.geolocation.getCurrentPosition(
 
-        function(position) {
+        async function(position) {
 
-            const lat =
+            const latitude =
                 position.coords.latitude;
 
-            const lng =
+            const longitude =
                 position.coords.longitude;
 
 
-            selecionarLocal(lat, lng);
+            const posicao = {
+                lat: latitude,
+                lng: longitude
+            };
 
 
-            mapa.setZoom(16);
+            // Mover mapa
+            map.setCenter(posicao);
+
+            map.setZoom(16);
+
+
+            // Carregar marcador
+            const { AdvancedMarkerElement } =
+                await google.maps.importLibrary("marker");
+
+
+            // Remover marcador anterior
+            if (marcadorUsuario) {
+
+                marcadorUsuario.map = null;
+
+            }
+
+
+            // Criar marcador do usuário
+            marcadorUsuario =
+                new AdvancedMarkerElement({
+
+                    map: map,
+
+                    position: posicao,
+
+                    title: "Você está aqui"
+
+                });
+
+
+            // Também selecionar essa localização
+            selecionarLocal(
+                latitude,
+                longitude,
+                AdvancedMarkerElement
+            );
 
         },
 
 
-        function() {
+        function(error) {
 
-            alert(
-                "Não foi possível acessar sua localização."
-            );
+            switch (error.code) {
+
+                case error.PERMISSION_DENIED:
+
+                    alert(
+                        "Você não permitiu o acesso à localização."
+                    );
+
+                    break;
+
+
+                case error.POSITION_UNAVAILABLE:
+
+                    alert(
+                        "Não foi possível encontrar sua localização."
+                    );
+
+                    break;
+
+
+                case error.TIMEOUT:
+
+                    alert(
+                        "A localização demorou muito para responder."
+                    );
+
+                    break;
+
+
+                default:
+
+                    alert(
+                        "Não foi possível obter sua localização."
+                    );
+
+            }
 
         }
 
     );
+
 }
 
 
-// Criar embate
+// ==============================
+// CRIAR EMBATE
+// ==============================
+
 function criarEmbate() {
-
-    if (!localSelecionado) {
-
-        alert(
-            "📍 Escolha um local no mapa primeiro."
-        );
-
-        return;
-    }
-
 
     const nome =
         document.getElementById("nome").value;
@@ -189,21 +251,34 @@ function criarEmbate() {
         document.getElementById("vagas").value;
 
 
-    if (
-        !nome ||
-        !data ||
-        !horario
-    ) {
+    // Verificar nome
+    if (!nome) {
 
-        alert(
-            "Preencha todos os campos."
-        );
+        alert("Digite o nome do embate.");
 
         return;
+
     }
 
 
-    const novoEmbate = {
+    // Verificar localização
+    if (
+        localSelecionado.latitude === null ||
+        localSelecionado.longitude === null
+    ) {
+
+        alert(
+            "Escolha um local no mapa primeiro."
+        );
+
+        return;
+
+    }
+
+
+    console.log("NOVO EMBATE");
+
+    console.log({
 
         nome: nome,
 
@@ -215,164 +290,21 @@ function criarEmbate() {
 
         vagas: vagas,
 
-        lat: localSelecionado.lat,
+        latitude:
+            localSelecionado.latitude,
 
-        lng: localSelecionado.lng
+        longitude:
+            localSelecionado.longitude
 
-    };
-
-
-    embates.push(novoEmbate);
-
-
-    mostrarEmbatesNoMapa();
-
-    mostrarListaEmbates();
+    });
 
 
     alert(
         "🔥 Embate criado com sucesso!"
     );
 
-
-    document.getElementById("nome").value = "";
-
-}
+}import java.security.SecureRandom;
+import java.util.Base64;
 
 
-// Mostrar marcadores
-function mostrarEmbatesNoMapa() {
-
-    embates.forEach(function(embate) {
-
-        const marcadorEmbate =
-            new google.maps.Marker({
-
-                position: {
-                    lat: embate.lat,
-                    lng: embate.lng
-                },
-
-                map: mapa,
-
-                title: embate.nome
-
-            });
-
-
-        const janela =
-            new google.maps.InfoWindow({
-
-                content: `
-
-                    <div>
-
-                        <h3>
-                            ${embate.nome}
-                        </h3>
-
-                        <p>
-                            ${embate.esporte}
-                        </p>
-
-                        <p>
-                            📅 ${embate.data}
-                        </p>
-
-                        <p>
-                            ⏰ ${embate.horario}
-                        </p>
-
-                        <p>
-                            👥 ${embate.vagas} vagas
-                        </p>
-
-                    </div>
-
-                `
-            });
-
-
-        marcadorEmbate.addListener(
-            "click",
-            function() {
-
-                janela.open(
-                    mapa,
-                    marcadorEmbate
-                );
-
-            }
-        );
-
-    });
-
-}
-
-
-// Lista de embates
-function mostrarListaEmbates() {
-
-    const lista =
-        document.getElementById(
-            "listaEmbates"
-        );
-
-
-    lista.innerHTML = "";
-
-
-    embates.forEach(function(embate) {
-
-        lista.innerHTML += `
-
-            <div class="card-embate">
-
-                <div>
-
-                    <h3>
-                        ${embate.nome}
-                    </h3>
-
-                    <p>
-                        ${embate.esporte}
-                    </p>
-
-                    <p>
-                        📅 ${embate.data}
-                        •
-                        ⏰ ${embate.horario}
-                    </p>
-
-                    <p>
-                        👥 ${embate.vagas} vagas
-                    </p>
-
-                </div>
-
-
-                <button
-                    class="entrar"
-                    onclick="entrarEmbate('${embate.nome}')">
-
-                    Participar
-
-                </button>
-
-            </div>
-
-        `;
-
-    });
-
-}
-
-
-// Participar
-function entrarEmbate(nome) {
-
-    alert(
-        `Você entrou no embate: ${nome}`
-    );
-
-}
+   
